@@ -1049,8 +1049,12 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     """Start the bot."""
+    # Get bot token from environment variables
+    token = os.getenv('TELEGRAM_TOKEN')
+    if not token:
+        raise ValueError("No TELEGRAM_TOKEN found in environment variables")
+        
     # Create the Application and pass it your bot's token
-    token = "7609264045:AAFMBSKKNAayPuiFnDhu4WCL3AbpG8a24ZI"
     application = Application.builder().token(token).build()
 
     # Add handlers
